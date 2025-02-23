@@ -15,9 +15,9 @@ const Profile: React.FC = () => {
 
   const handleLogout = () => {
     reset();
-    notify('Logout realizado com sucesso!', {
+    notify('notification.logout', {
       type: 'info',
-      description: 'Até logo!',
+      description: 'notification.logoutDescription',
     });
     navigate('/');
   };

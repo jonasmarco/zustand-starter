@@ -28,9 +28,9 @@ const AuthStatus: React.FC = () => {
         cellphone: '(11) 98765-4321',
       },
     });
-    notify('Login realizado com sucesso!', {
+    notify('notification.login', {
       type: 'success',
-      description: 'Bem-vindo de volta!',
+      description: 'notification.loginDescription',
     });
     navigate('/profile');
   };

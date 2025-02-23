@@ -37,6 +37,25 @@ export const translations = {
       profile: 'Profile',
       settings: 'Settings',
     },
+    notification: {
+      login: 'Login successful!',
+      loginDescription: 'Welcome back!',
+      counterIncremented: 'Counter incremented!',
+      counterDecremented: 'Counter decremented!',
+      counterReset: 'Counter reset!',
+      counterDescription: 'New value: ',
+      counterZero: 'The counter has returned to zero',
+      logout: 'Logout successful!',
+      logoutDescription: 'See you later!',
+      settingsLanguage: 'Language changed successfully!',
+      settingsNotificationsEnabled: 'Notifications enabled!',
+      settingsNotificationsDisabled: 'Notifications disabled!',
+      settingsNotificationsDescription:
+        'You will receive notifications about important actions',
+      settingsNoNotificationsDescription:
+        'You will no longer receive notifications',
+      settingsLanguageDescription: 'The application language has been updated',
+    },
   },
   pt: {
     home: {
@@ -76,6 +95,24 @@ export const translations = {
       profile: 'Perfil',
       settings: 'Configurações',
     },
+    notification: {
+      login: 'Login realizado com sucesso!',
+      loginDescription: 'Bem-vindo de volta!',
+      counterIncremented: 'Contador incrementado!',
+      counterDecremented: 'Contador decrementado!',
+      counterReset: 'Contador resetado!',
+      counterDescription: 'Novo valor: ',
+      counterZero: 'O contador voltou para zero',
+      logout: 'Logout realizado com sucesso!',
+      logoutDescription: 'Até logo!',
+      settingsLanguage: 'Idioma alterado com sucesso!',
+      settingsNotificationsEnabled: 'Notificações ativadas!',
+      settingsNotificationsDisabled: 'Notificações desativadas!',
+      settingsNotificationsDescription:
+        'Você receberá notificações sobre as ações importantes',
+      settingsNoNotificationsDescription: 'Você não receberá mais notificações',
+      settingsLanguageDescription: 'O idioma da aplicação foi atualizado',
+    },
   },
   es: {
     home: {
@@ -114,6 +151,25 @@ export const translations = {
       home: 'Inicio',
       profile: 'Perfil',
       settings: 'Configuraciones',
+    },
+    notification: {
+      login: 'Inicio de sesión realizado con exito!',
+      loginDescription: 'Bienvenido de vuelta!',
+      counterIncremented: 'Contador incrementado!',
+      counterDecremented: 'Contador decrementado!',
+      counterReset: 'Contador resetado!',
+      counterDescription: 'Nuevo valor: ',
+      counterZero: 'El contador ha vuelto a cero',
+      logout: 'Logout realizado con exito!',
+      logoutDescription: 'Hasta luego!',
+      settingsLanguage: 'Idioma cambiado con exito!',
+      settingsNotificationsEnabled: 'Notificaciones activadas!',
+      settingsNotificationsDisabled: 'Notificaciones desactivadas!',
+      settingsNotificationsDescription:
+        'Te recibirá notificaciones sobre acciones importantes',
+      settingsNoNotificationsDescription: 'Te perderá notificaciones',
+      settingsLanguageDescription:
+        'El idioma de la aplicación ha sido actualizado',
     },
   },
 };

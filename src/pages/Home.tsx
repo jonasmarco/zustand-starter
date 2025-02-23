@@ -13,25 +13,25 @@ const Home: React.FC = () => {
 
   const handleIncrement = () => {
     increment();
-    notify('Contador incrementado!', {
+    notify('notification.counterIncremented', {
       type: 'success',
-      description: `Novo valor: ${count + 1}`,
+      description: `${t('notification.counterDescription')} ${count + 1}`,
     });
   };
 
   const handleDecrement = () => {
     decrement();
-    notify('Contador decrementado!', {
+    notify('notification.counterDecremented', {
       type: 'info',
-      description: `Novo valor: ${count - 1}`,
+      description: `${t('notification.counterDescription')} ${count - 1}`,
     });
   };
 
   const handleReset = () => {
     reset();
-    notify('Contador resetado!', {
+    notify('notification.counterReset', {
       type: 'warning',
-      description: 'O contador voltou para zero',
+      description: 'notification.counterZero',
     });
   };
 

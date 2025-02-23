@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {
+  useEffect,
+  useRef,
+} from 'react';
 
 import { useNotification } from '../hooks/useNotification';
 import { useTranslation } from '../hooks/useTranslation';
@@ -18,27 +21,52 @@ const Settings: React.FC = () => {
 
   const handleSettingsChange = (settings: Partial<SettingsState>) => {
     updateSettings(settings);
+  };
 
-    if ('notificationsEnabled' in settings) {
+  const isFirstRenderNotifications = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRenderNotifications.current) {
+      isFirstRenderNotifications.current = false;
+      return;
+    }
+
+    if (notificationsEnabled) {
       notify(
-        settings.notificationsEnabled
-          ? 'Notificações ativadas!'
-          : 'Notificações desativadas!',
+        'notification.settingsNotificationsEnabled',
         {
           type: 'info',
-          description: settings.notificationsEnabled
-            ? 'Você receberá notificações sobre as ações importantes'
-            : 'Você não receberá mais notificações',
-        }
+          description: 'notification.settingsNotificationsDescription',
+        },
+        true
+      );
+    } else {
+      notify(
+        'notification.settingsNotificationsDisabled',
+        {
+          type: 'warning',
+          description: 'notification.settingsNoNotificationsDescription',
+        },
+        true
       );
     }
+  }, [notificationsEnabled]);
 
-    if ('language' in settings) {
-      notify('Idioma alterado com sucesso!', {
-        type: 'success',
-      });
+  const isFirstRenderLanguage = useRef(true);
+  useEffect(() => {
+    if (isFirstRenderLanguage.current) {
+      isFirstRenderLanguage.current = false;
+      return;
     }
-  };
+    notify(
+      'notification.settingsLanguage',
+      {
+        type: 'success',
+        description: 'notification.settingsLanguageDescription',
+      },
+      true
+    );
+  }, [language]);
 
   return (
     <div
