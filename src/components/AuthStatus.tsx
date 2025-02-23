@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useNotification } from '../hooks/useNotification';
 import { useTranslation } from '../hooks/useTranslation';
 import { useAuthStore } from '../store/authStore';
 import { useThemeStore } from '../store/themeStore';
@@ -10,6 +11,7 @@ const AuthStatus: React.FC = () => {
   const { theme } = useThemeStore();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { notify } = useNotification();
 
   const handleLogin = () => {
     update({
@@ -25,6 +27,10 @@ const AuthStatus: React.FC = () => {
         phone: '(11) 3456-7890',
         cellphone: '(11) 98765-4321',
       },
+    });
+    notify('Login realizado com sucesso!', {
+      type: 'success',
+      description: 'Bem-vindo de volta!',
     });
     navigate('/profile');
   };

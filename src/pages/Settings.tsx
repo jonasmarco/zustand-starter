@@ -1,13 +1,44 @@
 import React from 'react';
 
+import { useNotification } from '../hooks/useNotification';
 import { useTranslation } from '../hooks/useTranslation';
 import { useSettingsStore } from '../store/settingsStore';
 import { useThemeStore } from '../store/themeStore';
+
+interface SettingsState {
+  language: 'en' | 'pt' | 'es';
+  notificationsEnabled: boolean;
+}
 
 const Settings: React.FC = () => {
   const { language, notificationsEnabled, updateSettings } = useSettingsStore();
   const { theme } = useThemeStore();
   const { t } = useTranslation();
+  const { notify } = useNotification();
+
+  const handleSettingsChange = (settings: Partial<SettingsState>) => {
+    updateSettings(settings);
+
+    if ('notificationsEnabled' in settings) {
+      notify(
+        settings.notificationsEnabled
+          ? 'Notificações ativadas!'
+          : 'Notificações desativadas!',
+        {
+          type: 'info',
+          description: settings.notificationsEnabled
+            ? 'Você receberá notificações sobre as ações importantes'
+            : 'Você não receberá mais notificações',
+        }
+      );
+    }
+
+    if ('language' in settings) {
+      notify('Idioma alterado com sucesso!', {
+        type: 'success',
+      });
+    }
+  };
 
   return (
     <div
@@ -34,7 +65,9 @@ const Settings: React.FC = () => {
           <select
             value={language}
             onChange={(e) =>
-              updateSettings({ language: e.target.value as 'en' | 'pt' | 'es' })
+              handleSettingsChange({
+                language: e.target.value as 'en' | 'pt' | 'es',
+              })
             }
             className={`w-full p-2 border rounded ${
               theme === 'dark'
@@ -54,7 +87,7 @@ const Settings: React.FC = () => {
             id="notifications"
             checked={notificationsEnabled}
             onChange={(e) =>
-              updateSettings({ notificationsEnabled: e.target.checked })
+              handleSettingsChange({ notificationsEnabled: e.target.checked })
             }
             className={`mr-2 ${
               theme === 'dark'

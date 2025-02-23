@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useNotification } from '../hooks/useNotification';
 import { useTranslation } from '../hooks/useTranslation';
 import { useAuthStore } from '../store/authStore';
 import { useThemeStore } from '../store/themeStore';
@@ -10,9 +11,14 @@ const Profile: React.FC = () => {
   const { theme } = useThemeStore();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { notify } = useNotification();
 
   const handleLogout = () => {
     reset();
+    notify('Logout realizado com sucesso!', {
+      type: 'info',
+      description: 'Até logo!',
+    });
     navigate('/');
   };
 

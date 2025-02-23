@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { useNotification } from '../hooks/useNotification';
 import { useTranslation } from '../hooks/useTranslation';
 import useCounterStore from '../store/counterStore';
 import { useThemeStore } from '../store/themeStore';
@@ -8,6 +9,31 @@ const Home: React.FC = () => {
   const { count, increment, decrement, reset } = useCounterStore();
   const { theme } = useThemeStore();
   const { t } = useTranslation();
+  const { notify } = useNotification();
+
+  const handleIncrement = () => {
+    increment();
+    notify('Contador incrementado!', {
+      type: 'success',
+      description: `Novo valor: ${count + 1}`,
+    });
+  };
+
+  const handleDecrement = () => {
+    decrement();
+    notify('Contador decrementado!', {
+      type: 'info',
+      description: `Novo valor: ${count - 1}`,
+    });
+  };
+
+  const handleReset = () => {
+    reset();
+    notify('Contador resetado!', {
+      type: 'warning',
+      description: 'O contador voltou para zero',
+    });
+  };
 
   return (
     <div
@@ -36,7 +62,7 @@ const Home: React.FC = () => {
               ? 'bg-blue-600 hover:bg-blue-700'
               : 'bg-blue-500 hover:bg-blue-600'
           } text-white`}
-          onClick={increment}
+          onClick={handleIncrement}
         >
           {t('home.increment')}
         </button>
@@ -46,7 +72,7 @@ const Home: React.FC = () => {
               ? 'bg-red-600 hover:bg-red-700'
               : 'bg-red-500 hover:bg-red-600'
           } text-white`}
-          onClick={decrement}
+          onClick={handleDecrement}
         >
           {t('home.decrement')}
         </button>
@@ -56,7 +82,7 @@ const Home: React.FC = () => {
               ? 'bg-gray-600 hover:bg-gray-700'
               : 'bg-gray-500 hover:bg-gray-600'
           } text-white`}
-          onClick={reset}
+          onClick={handleReset}
         >
           {t('home.reset')}
         </button>
