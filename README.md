@@ -2,7 +2,7 @@
 
 A modern React starter template featuring Zustand for state management, with built-in support for dark mode, internationalization, and authentication.
 
-![Zustand Starter](preview.png)
+![Zustand Starter](./preview.png)
 
 ## 🚀 Features
 
