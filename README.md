@@ -138,7 +138,7 @@ Language can be changed in the Settings page and persists across sessions.
 
 📧 Contact
 
-- Jonas Marco - @jonasmarco
+- Jonas Marco - [@jonasmarco](https://github.com/jonasmarco)
 
 Project Link: <https://github.com/jonasmarco/zustand-starter>
 
